@@ -1,9 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jenkins Azure Demo</title>
+    <title>Ping App</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f2f2f2;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+    </style>
+
 </head>
+
 <body>
-    <h1>Welcome to Jenkins CI/CD Pipeline</h1>
+
+<div class="box">
+
+<h1>Ping App</h1>
+
+<p id="message">
+Application is running successfully
+</p>
+
+<button onclick="ping()">Ping</button>
+
+</div>
+
+
+<script>
+
+function ping(){
+
+document.getElementById("message").innerHTML =
+"Ping Response : SUCCESS";
+
+}
+
+</script>
+
+
 </body>
+
 </html>
