@@ -1,65 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ping App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ping Application</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            margin-top: 100px;
-            background-color: #f2f2f2;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-        .box {
-            background: white;
-            padding: 30px;
-            width: 400px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-        }
+body{
+    background:linear-gradient(135deg,#0f172a,#2563eb);
+    color:white;
+}
 
-        h1 {
-            color: green;
-        }
+header{
+    background:#111827;
+    padding:20px;
+    text-align:center;
+}
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
+header h1{
+    font-size:40px;
+}
 
-    </style>
+.container{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+}
+
+.card{
+    background:white;
+    color:#333;
+    border-radius:10px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.status{
+    color:green;
+    font-weight:bold;
+    font-size:22px;
+}
+
+button{
+    padding:12px 30px;
+    border:none;
+    border-radius:5px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table th{
+    background:#2563eb;
+    color:white;
+    padding:10px;
+}
+
+table td{
+    padding:10px;
+    border:1px solid #ddd;
+}
+
+footer{
+    background:#111827;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+</style>
 
 </head>
 
 <body>
 
-<div class="box">
+<header>
+<h1>🚀 DevOps Ping Application</h1>
+<p>GitHub → Jenkins → Docker → Azure CI/CD Demo</p>
+</header>
 
-<h1>Ping App</h1>
+<div class="container">
 
-<p id="message">
-Application is running successfully
+<div class="card">
+<h2>Application Status</h2>
+<br>
+
+<p class="status" id="status">
+🟢 Application Running Successfully
 </p>
 
-<button onclick="ping()">Ping</button>
+<br>
+
+<button onclick="pingServer()">Ping Server</button>
+
+<h3 id="result" style="margin-top:20px;"></h3>
 
 </div>
 
+<div class="card">
+<h2>Deployment Information</h2>
+
+<table>
+
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>Application</td>
+<td>Ping App</td>
+</tr>
+
+<tr>
+<td>Version</td>
+<td>1.0.0</td>
+</tr>
+
+<tr>
+<td>Environment</td>
+<td>Production</td>
+</tr>
+
+<tr>
+<td>CI Tool</td>
+<td>Jenkins</td>
+</tr>
+
+<tr>
+<td>Repository</td>
+<td>GitHub</td>
+</tr>
+
+<tr>
+<td>Container</td>
+<td>Docker</td>
+</tr>
+
+<tr>
+<td>Cloud</td>
+<td>Microsoft Azure</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>Pipeline Flow</h2>
+
+<ol>
+
+<li>Developer pushes code to GitHub</li>
+<li>Jenkins detects new commit</li>
+<li>Jenkins builds Docker image</li>
+<li>Docker image is deployed</li>
+<li>Azure hosts the application</li>
+<li>Application becomes available to users</li>
+
+</ol>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>DevOps CI/CD Pipeline Demo</h3>
+
+<p id="time"></p>
+
+</footer>
 
 <script>
 
-function ping(){
+function pingServer(){
 
-document.getElementById("message").innerHTML =
-"Ping Response : SUCCESS";
+document.getElementById("result").innerHTML=
+"✅ PONG! Server responded successfully at <b>"+new Date().toLocaleTimeString()+"</b>";
 
 }
 
+document.getElementById("time").innerHTML=
+"Current Date & Time : "+new Date().toLocaleString();
+
 </script>
 
-
 </body>
-
 </html>
