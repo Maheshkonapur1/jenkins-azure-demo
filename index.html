@@ -1,90 +1,86 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ping Application</title>
+<title>Enterprise Deployment Dashboard</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
 body{
-    background:linear-gradient(135deg,#0f172a,#2563eb);
-    color:white;
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
 }
 
 header{
-    background:#111827;
-    padding:20px;
+    background:#0b5ed7;
+    color:white;
+    padding:25px;
     text-align:center;
-}
-
-header h1{
-    font-size:40px;
 }
 
 .container{
     width:90%;
-    max-width:900px;
-    margin:40px auto;
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
 }
 
 .card{
     background:white;
-    color:#333;
+    padding:20px;
+    margin:20px 0;
     border-radius:10px;
-    padding:25px;
-    margin-bottom:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
 }
 
-.status{
+.success{
     color:green;
     font-weight:bold;
     font-size:22px;
 }
 
-button{
-    padding:12px 30px;
-    border:none;
-    border-radius:5px;
-    background:#2563eb;
-    color:white;
-    cursor:pointer;
-    font-size:18px;
-}
-
-button:hover{
-    background:#1d4ed8;
-}
-
 table{
     width:100%;
     border-collapse:collapse;
-    margin-top:15px;
 }
 
 table th{
-    background:#2563eb;
+    background:#0b5ed7;
     color:white;
-    padding:10px;
+    padding:12px;
 }
 
 table td{
-    padding:10px;
     border:1px solid #ddd;
+    padding:12px;
+}
+
+ul li{
+    padding:8px;
+}
+
+button{
+    background:#198754;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    cursor:pointer;
+    font-size:16px;
+    border-radius:5px;
+}
+
+button:hover{
+    background:#146c43;
 }
 
 footer{
-    background:#111827;
+    background:#212529;
+    color:white;
     text-align:center;
     padding:20px;
-    margin-top:50px;
+    margin-top:30px;
 }
 </style>
 
@@ -93,46 +89,52 @@ footer{
 <body>
 
 <header>
-<h1>🚀 DevOps Ping Application</h1>
-<p>GitHub → Jenkins → Docker → Azure CI/CD Demo</p>
+
+<h1>🚀 Enterprise Deployment Portal</h1>
+
+<p>Continuous Integration & Continuous Deployment Dashboard</p>
+
 </header>
 
 <div class="container">
 
 <div class="card">
-<h2>Application Status</h2>
-<br>
 
-<p class="status" id="status">
-🟢 Application Running Successfully
+<h2>Deployment Status</h2>
+
+<p class="success">
+✅ Deployment Completed Successfully
 </p>
 
-<br>
+<p>
+Your application has been deployed successfully using the automated DevOps pipeline.
+</p>
 
-<button onclick="pingServer()">Ping Server</button>
+<button onclick="deployInfo()">View Deployment Details</button>
 
-<h3 id="result" style="margin-top:20px;"></h3>
+<p id="status" style="margin-top:20px;color:blue;font-weight:bold;"></p>
 
 </div>
 
 <div class="card">
-<h2>Deployment Information</h2>
+
+<h2>Application Information</h2>
 
 <table>
 
 <tr>
-<th>Item</th>
+<th>Property</th>
 <th>Value</th>
 </tr>
 
 <tr>
-<td>Application</td>
-<td>Ping App</td>
+<td>Application Name</td>
+<td>Enterprise Ping Application</td>
 </tr>
 
 <tr>
-<td>Version</td>
-<td>1.0.0</td>
+<td>Application Version</td>
+<td>2.5.1</td>
 </tr>
 
 <tr>
@@ -141,23 +143,28 @@ footer{
 </tr>
 
 <tr>
-<td>CI Tool</td>
-<td>Jenkins</td>
+<td>Application Status</td>
+<td style="color:green;">Running</td>
 </tr>
 
 <tr>
-<td>Repository</td>
-<td>GitHub</td>
+<td>Build Number</td>
+<td>#125</td>
 </tr>
 
 <tr>
-<td>Container</td>
-<td>Docker</td>
+<td>Release Version</td>
+<td>Release-2026.07</td>
 </tr>
 
 <tr>
-<td>Cloud</td>
-<td>Microsoft Azure</td>
+<td>Deployment Time</td>
+<td id="deployTime"></td>
+</tr>
+
+<tr>
+<td>Last Health Check</td>
+<td>Healthy</td>
 </tr>
 
 </table>
@@ -166,18 +173,116 @@ footer{
 
 <div class="card">
 
-<h2>Pipeline Flow</h2>
+<h2>CI/CD Pipeline</h2>
 
-<ol>
+<ul>
 
-<li>Developer pushes code to GitHub</li>
-<li>Jenkins detects new commit</li>
-<li>Jenkins builds Docker image</li>
-<li>Docker image is deployed</li>
-<li>Azure hosts the application</li>
-<li>Application becomes available to users</li>
+<li>✅ Source Code Pushed to GitHub</li>
 
-</ol>
+<li>✅ Jenkins Pipeline Triggered</li>
+
+<li>✅ Code Checkout Completed</li>
+
+<li>✅ Maven Build Successful</li>
+
+<li>✅ Unit Tests Passed</li>
+
+<li>✅ Docker Image Created</li>
+
+<li>✅ Docker Image Pushed to Azure Container Registry</li>
+
+<li>✅ Azure Web App Updated</li>
+
+<li>✅ Smoke Tests Passed</li>
+
+<li>✅ Production Deployment Successful</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>Infrastructure Details</h2>
+
+<table>
+
+<tr>
+<th>Component</th>
+<th>Technology</th>
+</tr>
+
+<tr>
+<td>Source Control</td>
+<td>GitHub</td>
+</tr>
+
+<tr>
+<td>CI Server</td>
+<td>Jenkins</td>
+</tr>
+
+<tr>
+<td>Build Tool</td>
+<td>Maven</td>
+</tr>
+
+<tr>
+<td>Container Platform</td>
+<td>Docker</td>
+</tr>
+
+<tr>
+<td>Container Registry</td>
+<td>Azure Container Registry</td>
+</tr>
+
+<tr>
+<td>Cloud Platform</td>
+<td>Microsoft Azure</td>
+</tr>
+
+<tr>
+<td>Monitoring</td>
+<td>Azure Monitor</td>
+</tr>
+
+<tr>
+<td>Logging</td>
+<td>Application Logs</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>Application Features</h2>
+
+<ul>
+
+<li>User Authentication</li>
+
+<li>REST API Services</li>
+
+<li>Health Monitoring</li>
+
+<li>Secure HTTPS Communication</li>
+
+<li>Automatic Scaling</li>
+
+<li>Continuous Deployment</li>
+
+<li>Performance Monitoring</li>
+
+<li>Cloud Hosted Infrastructure</li>
+
+<li>24x7 Availability</li>
+
+<li>Enterprise Security</li>
+
+</ul>
 
 </div>
 
@@ -185,25 +290,37 @@ footer{
 
 <footer>
 
-<h3>DevOps CI/CD Pipeline Demo</h3>
+<p>Enterprise DevOps Demo Application</p>
 
-<p id="time"></p>
+<p id="clock"></p>
 
 </footer>
 
 <script>
 
-function pingServer(){
+function deployInfo(){
 
-document.getElementById("result").innerHTML=
-"✅ PONG! Server responded successfully at <b>"+new Date().toLocaleTimeString()+"</b>";
+document.getElementById("status").innerHTML=
+"Deployment Verified ✔ Build #125 | Environment : Production | Status : Healthy";
 
 }
 
-document.getElementById("time").innerHTML=
-"Current Date & Time : "+new Date().toLocaleString();
+function updateClock(){
+
+document.getElementById("clock").innerHTML=
+"Current Time : " + new Date().toLocaleString();
+
+document.getElementById("deployTime").innerHTML=
+new Date().toLocaleString();
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
 
 </script>
 
 </body>
 </html>
+```
